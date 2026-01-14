@@ -56,43 +56,43 @@ Proyek ini bertujuan untuk melakukan segmentasi pelanggan mall berdasarkan data 
 ```
 mall-customer-segmentation/
 │
-├── 📁 data/                           # Data storage
-│   ├── 📁 raw/                       # Data mentah
-│   │   └── Mall_Customers.csv        # Dataset asli
-│   └── 📁 processed/                 # Data hasil proses
+├── 📁 data/                           
+│   ├── 📁 raw/                       
+│   │   └── Mall_Customers.csv        
+│   └── 📁 processed/                 
 │       └── mall_customers_clustered.csv
 │
-├── 📁 notebooks/                      # Jupyter Notebooks
-│   ├── 01_data_exploration.ipynb     # Eksplorasi data
-│   ├── 02_feature_analysis.ipynb     # Analisis fitur
-│   └── 03_clustering.ipynb           # Modeling clustering
+├── 📁 notebooks/                   
+│   ├── 01_data_exploration.ipynb    
+│   ├── 02_feature_analysis.ipynb    
+│   └── 03_clustering.ipynb           
 │
-├── 📁 src/                           # Source code Python
+├── 📁 src/                          
 │   ├── __init__.py
-│   ├── data_loader.py               # Load & cek data
-│   ├── preprocessing.py             # Cleaning & preprocessing
-│   ├── eda.py                       # Exploratory Data Analysis
-│   ├── clustering.py                # K-Means algorithm
-│   ├── visualization.py             # Plotting functions
-│   └── utils.py                     # Utility functions
+│   ├── data_loader.py              
+│   ├── preprocessing.py             
+│   ├── eda.py                       
+│   ├── clustering.py                
+│   ├── visualization.py             
+│   └── utils.py                   
 │
-├── 📁 reports/                       # Laporan & hasil
-│   ├── 📁 figures/                  # Visualisasi
+├── 📁 reports/                       
+│   ├── 📁 figures/                 
 │   │   ├── eda_plots.png
 │   │   ├── elbow_method.png
 │   │   ├── cluster_3d.png
 │   │   └── cluster_profiles.png
-│   └── summary_report.md            # Laporan analisis
+│   └── summary_report.md         
 │
-├── 📁 tests/                         # Unit tests
+├── 📁 tests/                         
 │   ├── test_preprocessing.py
 │   └── test_clustering.py
 │
-├── 📄 requirements.txt               # Dependencies
-├── 📄 requirements-dev.txt          # Dev dependencies
-├── 📄 main.py                       # Script utama
-├── 📄 config.py                     # Konfigurasi
-└── 📄 README.md                     # Dokumentasi ini
+├── 📄 requirements.txt               
+├── 📄 requirements-dev.txt          
+├── 📄 main.py                      
+├── 📄 config.py                     
+└── 📄 README.md                    
 ```
 
 ## 🛠️ Instalasi
@@ -259,9 +259,6 @@ Kontribusi sangat diterima! Ikuti langkah berikut:
 - Tambahkan **unit test** untuk kode baru
 - Update **documentation** sesuai perubahan
 
-## 📝 Lisensi
-
-Distribusi di bawah lisensi MIT. Lihat file [LICENSE](LICENSE) untuk detail lebih lanjut.
 
 ## 📞 Kontak
 
@@ -277,21 +274,6 @@ Distribusi di bawah lisensi MIT. Lihat file [LICENSE](LICENSE) untuk detail lebi
 - Inspirasi dari berbagai tutorial machine learning
 - Komunitas data science Indonesia
 
-## ⭐ Support
-
-Jika project ini membantu Anda, berikan ⭐ di GitHub!
-
----
-
-<div align="center">
-  
-**Dibuat dengan ❤️ untuk komunitas Data Science**
-
-<sub>Terakhir diperbarui: {tanggal_update}</sub>
-
-</div>
-
----
 
 ## 📚 Referensi
 
@@ -300,17 +282,3 @@ Jika project ini membantu Anda, berikan ⭐ di GitHub!
 3. [Towards Data Science - Customer Segmentation](https://towardsdatascience.com/customer-segmentation-using-k-means-clustering-d33964f238c3)
 4. [Analytics Vidhya - Complete Guide to K-Means Clustering](https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/)
 
-## 🔄 Changelog
-
-### v1.0.0 (Current)
-- Implementasi K-Means clustering
-- Visualisasi EDA lengkap
-- Dokumentasi komprehensif
-- Unit testing framework
-
-### v0.1.0 (Initial)
-- Setup project structure
-- Basic data loading & preprocessing
-- Exploratory analysis
-
----

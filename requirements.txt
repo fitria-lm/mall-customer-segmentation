@@ -10,3 +10,4 @@ seaborn==0.13.0
 plotly==5.18.0
 jupyter==1.0.0
 pyyaml==6.0.1
+

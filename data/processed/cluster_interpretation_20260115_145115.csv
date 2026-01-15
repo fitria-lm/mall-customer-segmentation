@@ -1,0 +1,7 @@
+Cluster,Name,Characteristics,Recommendations
+0,Segment 0,"['Middle-aged', 'High Income', 'Low Spender', 'Male-dominated']",[]
+1,Senior Citizens,"['Senior', 'Medium Income', 'Moderate Spender', 'Female-dominated']","['• Ensure store accessibility and comfort', '• Offer senior citizen discounts', '• Provide personalized assistance']"
+2,Young Trendsetters,"['Young', 'Low Income', 'High Spender', 'Female-dominated']","['• Target with premium products and exclusive offers', '• Implement loyalty programs with VIP benefits', '• Personalize shopping experiences', '• Engage through social media campaigns', '• Offer trendy and fashionable products', '• Create experiential shopping events']"
+3,Premium Shoppers,"['Middle-aged', 'High Income', 'High Spender', 'Female-dominated']","['• Target with premium products and exclusive offers', '• Implement loyalty programs with VIP benefits', '• Personalize shopping experiences']"
+4,Segment 4,"['Young', 'Medium Income', 'Moderate Spender', 'Female-dominated']","['• Engage through social media campaigns', '• Offer trendy and fashionable products', '• Create experiential shopping events']"
+5,Budget-conscious,"['Middle-aged', 'Low Income', 'Low Spender', 'Female-dominated']",[]

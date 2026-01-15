@@ -1,0 +1,102 @@
+{
+  "timestamp": "20260115_145115",
+  "optimal_k": 6,
+  "features": [
+    "Age",
+    "Annual Income (k$)",
+    "Spending Score (1-100)"
+  ],
+  "model_params": {
+    "n_clusters": 6,
+    "random_state": 42,
+    "n_init": 20,
+    "max_iter": 300
+  },
+  "cluster_interpretations": [
+    {
+      "Cluster": 0,
+      "Name": "Segment 0",
+      "Characteristics": [
+        "Middle-aged",
+        "High Income",
+        "Low Spender",
+        "Male-dominated"
+      ],
+      "Recommendations": []
+    },
+    {
+      "Cluster": 1,
+      "Name": "Senior Citizens",
+      "Characteristics": [
+        "Senior",
+        "Medium Income",
+        "Moderate Spender",
+        "Female-dominated"
+      ],
+      "Recommendations": [
+        "\u2022 Ensure store accessibility and comfort",
+        "\u2022 Offer senior citizen discounts",
+        "\u2022 Provide personalized assistance"
+      ]
+    },
+    {
+      "Cluster": 2,
+      "Name": "Young Trendsetters",
+      "Characteristics": [
+        "Young",
+        "Low Income",
+        "High Spender",
+        "Female-dominated"
+      ],
+      "Recommendations": [
+        "\u2022 Target with premium products and exclusive offers",
+        "\u2022 Implement loyalty programs with VIP benefits",
+        "\u2022 Personalize shopping experiences",
+        "\u2022 Engage through social media campaigns",
+        "\u2022 Offer trendy and fashionable products",
+        "\u2022 Create experiential shopping events"
+      ]
+    },
+    {
+      "Cluster": 3,
+      "Name": "Premium Shoppers",
+      "Characteristics": [
+        "Middle-aged",
+        "High Income",
+        "High Spender",
+        "Female-dominated"
+      ],
+      "Recommendations": [
+        "\u2022 Target with premium products and exclusive offers",
+        "\u2022 Implement loyalty programs with VIP benefits",
+        "\u2022 Personalize shopping experiences"
+      ]
+    },
+    {
+      "Cluster": 4,
+      "Name": "Segment 4",
+      "Characteristics": [
+        "Young",
+        "Medium Income",
+        "Moderate Spender",
+        "Female-dominated"
+      ],
+      "Recommendations": [
+        "\u2022 Engage through social media campaigns",
+        "\u2022 Offer trendy and fashionable products",
+        "\u2022 Create experiential shopping events"
+      ]
+    },
+    {
+      "Cluster": 5,
+      "Name": "Budget-conscious",
+      "Characteristics": [
+        "Middle-aged",
+        "Low Income",
+        "Low Spender",
+        "Female-dominated"
+      ],
+      "Recommendations": []
+    }
+  ]
+}

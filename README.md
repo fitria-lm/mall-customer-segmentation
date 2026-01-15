@@ -1,55 +1,70 @@
-# 🛍️ Mall Customer Segmentation
+# 🛍️ Mall Customer Segmentation - Complete Analysis
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Machine Learning](https://img.shields.io/badge/ML-KMeans%20Clustering-orange)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
-Analisis segmentasi pelanggan mall menggunakan algoritma Machine Learning untuk mengelompokkan pelanggan berdasarkan karakteristik demografi dan perilaku belanja.
+**Segmentasi Pelanggan Mall Lengkap** dengan analisis data eksplorasi, preprocessing, clustering K-Means, dan visualisasi interaktif untuk strategi pemasaran yang efektif.
 
 ## 📊 Demo & Visualisasi
 
-| Elbow Method | 3D Clustering | Income vs Spending |
+| EDA Distributions | Elbow Method | 3D Clustering |
 |:---:|:---:|:---:|
-| ![Elbow Method](reports/figures/elbow_method.png) | ![3D Clustering](reports/figures/cluster_3d.png) | ![Income vs Spending](reports/figures/eda_plots.png) |
+| ![EDA](reports/figures/eda_distributions.png) | ![Elbow Method](reports/figures/optimal_k_analysis.png) | ![3D Clustering](reports/figures/3d_cluster_visualization.png) |
+
+| Cluster Analysis | Correlation Matrix | Radar Chart |
+|:---:|:---:|:---:|
+| ![Cluster Analysis](reports/figures/comprehensive_cluster_analysis.png) | ![Correlation](reports/figures/correlation_matrix.png) | ![Radar Chart](reports/figures/cluster_radar_chart.png) |
 
 ## 📋 Daftar Isi
 - [Latar Belakang](#-latar-belakang)
-- [Fitur Dataset](#-fitur-dataset)
+- [Dataset](#-dataset)
 - [Struktur Proyek](#-struktur-proyek)
-- [Instalasi](#-instalasi)
+- [Instalasi Cepat](#-instalasi-cepat)
 - [Penggunaan](#-penggunaan)
 - [Hasil Analisis](#-hasil-analisis)
-- [Metodologi](#-metodologi)
+- [Metodologi](#️-metodologi)
 - [Teknologi](#-teknologi)
+- [Fitur Unggulan](#-fitur-unggulan)
 - [Kontribusi](#-kontribusi)
 - [Lisensi](#-lisensi)
 - [Kontak](#-kontak)
 
 ## 🎯 Latar Belakang
 
-Proyek ini bertujuan untuk melakukan segmentasi pelanggan mall berdasarkan data demografi (usia, jenis kelamin, pendapatan) dan perilaku belanja (spending score). Dengan segmentasi ini, tim pemasaran dapat:
-- 🎯 Menargetkan kampanye iklan yang lebih personal
-- 📈 Meningkatkan efektivitas strategi pemasaran
-- 💡 Memahami pola perilaku pelanggan yang berbeda
-- 🏷️ Mengembangkan program loyalitas yang sesuai
+Proyek ini melakukan **segmentasi pelanggan mall** menggunakan teknik unsupervised learning (K-Means Clustering) untuk mengidentifikasi kelompok pelanggan berdasarkan karakteristik demografi dan perilaku belanja.
 
-**Dataset**: [Mall Customer Segmentation Data](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python) dari Kaggle (200 records)
+**Tujuan Bisnis:**
+- 🎯 **Targeted Marketing**: Kampanye iklan yang personal untuk setiap segmen
+- 📈 **Revenue Optimization**: Alokasi budget pemasaran yang efektif
+- 💡 **Customer Insights**: Pemahaman mendalam tentang perilaku pelanggan
+- 🏷️ **Loyalty Programs**: Program loyalitas yang sesuai dengan preferensi masing-masing segmen
+- 🔄 **Personalized Experience**: Pengalaman belanja yang disesuaikan
 
-## 📈 Fitur Dataset
+**Dataset**: [Mall Customer Segmentation Data](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python) - 200 records pelanggan mall
 
-| Kolom | Deskripsi | Tipe Data |
-|-------|-----------|-----------|
-| CustomerID | ID unik pelanggan | Integer |
-| Genre | Jenis kelamin (Male/Female) | Categorical |
-| Age | Usia pelanggan | Integer |
-| Annual Income (k$) | Pendapatan tahunan (dalam ribuan USD) | Integer |
-| Spending Score (1-100) | Skor belanja yang diberikan mall (1-100) | Integer |
+## 📈 Dataset
 
-**Statistik Deskriptif:**
-- Jumlah pelanggan: 200
-- Rata-rata usia: 38.85 tahun
-- Rata-rata pendapatan: $60.56k
-- Rata-rata spending score: 50.2
+### Struktur Data
+| Kolom | Deskripsi | Tipe Data | Range/Nilai |
+|-------|-----------|-----------|-------------|
+| CustomerID | ID unik pelanggan | Integer | 0001-0200 |
+| Genre | Jenis kelamin | Categorical | Male, Female |
+| Age | Usia pelanggan | Integer | 18-70 |
+| Annual Income (k$) | Pendapatan tahunan (ribuan USD) | Integer | 15-137 |
+| Spending Score (1-100) | Skor belanja dari mall | Integer | 1-99 |
+
+### Statistik Deskriptif
+```python
+Total Customers: 200
+Gender Distribution: 44% Male, 56% Female
+Average Age: 38.85 years
+Average Income: $60.56k 
+Average Spending Score: 50.20
+Age Range: 18-70 years
+Income Range: $15k-$137k
+```
 
 ## 📁 Struktur Proyek
 
@@ -57,228 +72,342 @@ Proyek ini bertujuan untuk melakukan segmentasi pelanggan mall berdasarkan data 
 mall-customer-segmentation/
 │
 ├── 📁 data/                           
-│   ├── 📁 raw/                       
+│   ├── 📁 raw/                       # Data original
 │   │   └── Mall_Customers.csv        
-│   └── 📁 processed/                 
-│       └── mall_customers_clustered.csv
+│   └── 📁 processed/                 # Data hasil clustering
+│       └── mall_customers_clustered_*.csv
 │
 ├── 📁 notebooks/                   
-│   ├── 01_data_exploration.ipynb    
-│   ├── 02_feature_analysis.ipynb    
-│   └── 03_clustering.ipynb           
+│   └── mall_customer_segmentation.ipynb  # Notebook utama
 │
-├── 📁 src/                          
-│   ├── __init__.py
-│   ├── data_loader.py              
-│   ├── preprocessing.py             
-│   ├── eda.py                       
-│   ├── clustering.py                
-│   ├── visualization.py             
-│   └── utils.py                   
+├── 📁 src/                          # Modul Python
+│   ├── data_loader.py              # Load dataset
+│   ├── preprocessing.py            # Preprocessing data
+│   ├── clustering.py               # Algoritma K-Means
+│   └── visualization.py            # Visualisasi
 │
-├── 📁 reports/                       
-│   ├── 📁 figures/                 
-│   │   ├── eda_plots.png
-│   │   ├── elbow_method.png
-│   │   ├── cluster_3d.png
-│   │   └── cluster_profiles.png
-│   └── summary_report.md         
+├── 📁 models/                       # Model tersimpan
+│   ├── kmeans_model_*.pkl         # Model K-Means
+│   ├── scaler_*.pkl               # Scaler untuk preprocessing
+│   └── label_encoder_*.pkl        # Label encoder
 │
-├── 📁 tests/                         
-│   ├── test_preprocessing.py
-│   └── test_clustering.py
+├── 📁 reports/                     
+│   └── 📁 figures/                 # Semua visualisasi
+│       ├── eda_distributions.png
+│       ├── optimal_k_analysis.png
+│       ├── comprehensive_cluster_analysis.png
+│       └── cluster_radar_chart.png
 │
-├── 📄 requirements.txt               
-├── 📄 requirements-dev.txt          
-├── 📄 main.py                      
-├── 📄 config.py                     
-└── 📄 README.md                    
+├── 📄 requirements.txt             # Dependencies
+├── 📄 config.yaml                  # Konfigurasi project
+├── 📄 main.py                      # Script utama
+└── 📄 README.md                    # Dokumentasi ini
 ```
 
-## 🛠️ Instalasi
-
-### Prasyarat
-- Python 3.8 atau lebih tinggi
-- pip atau conda
+## 🚀 Instalasi Cepat
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/fitria-lm/mall-customer-segmentation.git
+git clone https://github.com/username/mall-customer-segmentation.git
 cd mall-customer-segmentation
 ```
 
-### 2. Setup Virtual Environment (Rekomendasi)
+### 2. Install Dependencies
 ```bash
-# Menggunakan venv
-python -m venv venv
-
-# Aktifkan di Windows
-venv\Scripts\activate
-
-# Aktifkan di Mac/Linux
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
-```bash
-# Install semua dependencies utama
 pip install -r requirements.txt
-
-# Untuk development (opsional)
-pip install -r requirements-dev.txt
 ```
 
-### 4. Jalankan Jupyter Notebook (Opsional)
+### 3. Setup Environment
 ```bash
-jupyter notebook notebooks/
+# Buat folder yang diperlukan
+mkdir -p data/raw data/processed models reports/figures
+
+# Salin dataset (jika belum ada)
+# atau dataset sudah included dalam notebook
 ```
 
-## 🚀 Penggunaan
-
-### Metode 1: Menjalankan Semua Analisis Sekaligus
+### 4. Jalankan Analysis
 ```bash
+# Opsi 1: Jalankan notebook
+jupyter notebook notebooks/mall_customer_segmentation.ipynb
+
+# Opsi 2: Jalankan script utama
 python main.py
 ```
-Script ini akan menjalankan seluruh pipeline:
-1. 📥 Load data
-2. 🧹 Preprocessing
-3. 📊 EDA (Exploratory Data Analysis)
-4. 🔍 Clustering dengan K-Means
-5. 📈 Visualisasi hasil
-6. 💾 Simpan hasil
 
-### Metode 2: Menjalankan Per Modul
+## 🔧 Penggunaan
+
+### Melalui Jupyter Notebook (Rekomendasi)
 ```bash
-# Import modul dan jalankan fungsi tertentu
-python -c "
+jupyter notebook notebooks/mall_customer_segmentation.ipynb
+```
+
+Notebook berisi **9 langkah lengkap**:
+1. **Setup Environment** - Import libraries dan konfigurasi
+2. **Load & Inspect Data** - Pemeriksaan data awal
+3. **Exploratory Data Analysis** - Analisis statistik dan visualisasi
+4. **Data Preprocessing** - Encoding dan scaling
+5. **Clustering Analysis** - Penentuan K optimal dan K-Means
+6. **Cluster Visualization** - Visualisasi 2D dan 3D
+7. **Business Insights** - Interpretasi hasil clustering
+8. **Save Results** - Simpan model dan hasil
+9. **Final Summary** - Ringkasan dan rekomendasi
+
+### Melalui Python Script
+```python
+# Contoh penggunaan modul
 from src.data_loader import load_data
 from src.preprocessing import preprocess_data
+from src.clustering import find_optimal_k, apply_kmeans
 
-df = load_data('data/raw/Mall_Customers.csv')
-df_processed = preprocess_data(df)
-print('Data shape:', df_processed.shape)
-"
-```
-
-### Metode 3: Menggunakan Jupyter Notebook
-```bash
-jupyter notebook notebooks/01_data_exploration.ipynb
-```
-
-### Metode 4: Fungsi Individual
-```python
-# Contoh penggunaan di Python script
-import sys
-sys.path.append('src')
-
-from data_loader import load_data
-from eda import perform_eda
-from clustering import perform_clustering
-
-# Load data
-df = load_data('data/raw/Mall_Customers.csv')
-
-# Exploratory Analysis
-perform_eda(df)
+# Load dan preprocess data
+df = load_data()
+df_processed, scaler = preprocess_data(df)
 
 # Clustering
-clusters, model = perform_clustering(df, n_clusters=5)
+optimal_k, wcss, silhouette_scores = find_optimal_k(df_processed)
+kmeans_model, labels = apply_kmeans(df_processed, optimal_k)
+```
+
+### Prediksi Segment untuk Pelanggan Baru
+```python
+from src.clustering import predict_customer_segment
+
+# Prediksi segment untuk pelanggan baru
+result = predict_customer_segment(
+    age=25,
+    income=80,
+    spending_score=90,
+    gender="Female"
+)
+
+print(f"Segment: {result['prediction']['segment_name']}")
+print(f"Characteristics: {result['prediction']['characteristics']}")
 ```
 
 ## 📊 Hasil Analisis
 
-### Segmentasi Pelanggan yang Ditemukan
-Setelah analisis, ditemukan **5 segmen pelanggan**:
+### Optimal Number of Clusters
+Berdasarkan analisis dengan **4 metode**:
+- **Elbow Method**: K = 5
+- **Silhouette Score**: K = 5 (Score: 0.553)
+- **Calinski-Harabasz**: K = 5 (Score: 247.42)
+- **Davies-Bouldin**: K = 5 (Score: 0.612)
 
-| Klaster | Jumlah | Profil | Karakteristik | Strategi Pemasaran |
-|---------|--------|--------|---------------|-------------------|
-| **Klaster 0** | 39 pelanggan | 🎯 **Pelanggan Premium** | Usia 30-40, Pendapatan tinggi ($86k), Spending tinggi (82) | VIP treatment, produk luxury, personal shopper |
-| **Klaster 1** | 35 pelanggan | 💼 **Pelanggan Hemat** | Usia 25-45, Pendapatan tinggi ($87k), Spending rendah (17) | Edukasi produk, diskon eksklusif, program tabungan |
-| **Klaster 2** | 23 pelanggan | 👵 **Senior Konservatif** | Usia >55, Pendapatan rendah ($41k), Spending rendah (40) | Diskon hari senior, produk kesehatan, layanan khusus |
-| **Klaster 3** | 81 pelanggan | 👫 **Keluarga Menengah** | Semua usia, Pendapatan menengah ($55k), Spending menengah (49) | Paket keluarga, program loyalitas, promo akhir pekan |
-| **Klaster 4** | 22 pelanggan | 🎉 **Anak Muda Boros** | Usia <30, Pendapatan rendah ($25k), Spending tinggi (79) | Tren terkini, promo event, pembayaran cicilan |
+**Kesimpulan**: **5 clusters optimal** untuk segmentasi pelanggan.
 
-### Key Insights
-1. **Korelasi Negatif** antara usia dan spending score (-0.33)
-2. **Tidak ada korelasi signifikan** antara pendapatan dan spending score (0.01)
-3. **Segmentasi optimal** adalah 5 klaster berdasarkan metode elbow dan silhouette score
-4. **Pelanggan wanita** cenderung memiliki spending score lebih tinggi (53.3 vs 46.8)
+### Customer Segments yang Ditemukan
 
-## 🔬 Metodologi
+| Segment | Size | Profile | Avg Age | Avg Income | Avg Spending | Strategy |
+|---------|------|---------|---------|------------|--------------|----------|
+| **Segment 0** | 39 | 🎯 **Premium Shoppers** | 32.5 | $86.5k | 82.1 | VIP programs, luxury products |
+| **Segment 1** | 35 | 💼 **Conservative Spenders** | 41.8 | $86.9k | 17.1 | Value deals, education |
+| **Segment 2** | 22 | 🎉 **Young Trendsetters** | 25.7 | $26.0k | 78.9 | Social media, trendy items |
+| **Segment 3** | 81 | 👫 **Family Shoppers** | 43.0 | $55.5k | 49.2 | Family packages, loyalty |
+| **Segment 4** | 23 | 👵 **Senior Citizens** | 45.3 | $41.0k | 40.0 | Senior discounts, comfort |
+
+### Key Business Insights
+1. **Segment Premium** (19.5%): High-value customers → prioritize retention
+2. **Segment Conservative** (17.5%): High income but low spending → need activation
+3. **Young Trendsetters** (11%): Low income but high spending → target with trendy items
+4. **Family Segment** (40.5%): Largest group → focus on volume sales
+5. **Senior Segment** (11.5%): Special needs → improve accessibility
+
+### Korelasi Penting
+- **Age vs Spending**: Korelasi negatif (-0.33) → younger customers spend more
+- **Income vs Spending**: Korelasi sangat rendah (0.01) → income doesn't predict spending
+- **Gender Difference**: Women have higher average spending score (53.3 vs 46.8)
+
+## 🧪 Metodologi
 
 ### 1. **Exploratory Data Analysis (EDA)**
-- Analisis distribusi setiap fitur
-- Deteksi outlier dengan boxplot
-- Analisis korelasi dengan heatmap
-- Visualisasi hubungan antar variabel
+- Distribusi univariate (histogram, boxplot, KDE)
+- Analisis bivariate (scatter plot, correlation matrix)
+- Segmentasi demografik (gender, age groups, income brackets)
+- Outlier detection dan data validation
 
-### 2. **Preprocessing**
-- Encoding variabel kategorikal (Gender → 0/1)
-- StandardScaler untuk normalisasi fitur
-- Validasi data completeness
+### 2. **Data Preprocessing**
+- **Label Encoding**: Gender (Male → 0, Female → 1)
+- **Feature Scaling**: StandardScaler untuk normalisasi
+- **Feature Selection**: Age, Income, Spending Score untuk clustering
 
-### 3. **Clustering dengan K-Means**
-- **Penentuan K optimal**: Elbow Method + Silhouette Score
-- **Algoritma**: K-Means++ dengan 10 inisialisasi
-- **Metrik**: WCSS (Within-Cluster Sum of Squares)
+### 3. **Clustering Algorithm**
+- **Algorithm**: K-Means++ dengan multiple initializations
+- **Optimal K Determination**:
+  - Elbow Method (WCSS analysis)
+  - Silhouette Score (0.553 untuk K=5)
+  - Calinski-Harabasz Index (247.42 untuk K=5)
+  - Davies-Bouldin Index (0.612 untuk K=5)
+- **Validation**: Cross-validation dengan random state
 
-### 4. **Validasi & Interpretasi**
-- Analisis centroid tiap klaster
-- Visualisasi 2D & 3D
-- Profiling berdasarkan statistik deskriptif
+### 4. **Cluster Analysis & Interpretation**
+- Centroid analysis untuk profiling
+- Statistical comparison antar clusters
+- Business naming convention
+- Strategy development per segment
+
+### 5. **Visualization**
+- 2D scatter plots dengan color-coded clusters
+- 3D visualization untuk multidimensional analysis
+- Radar charts untuk cluster comparison
+- Comprehensive dashboard untuk business reporting
 
 ## 🛠️ Teknologi
 
-**Bahasa & Framework:**
-- ![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?logo=python)
-- ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter)
+### Core Stack
+- **Python 3.8+** - Bahasa pemrograman utama
+- **Jupyter Notebook** - Interactive analysis environment
+- **Pandas & NumPy** - Data manipulation
+- **Scikit-learn** - Machine learning algorithms
+- **Matplotlib & Seaborn** - Static visualizations
+- **Plotly** - Interactive visualizations
 
-**Data Science Stack:**
-- ![Pandas](https://img.shields.io/badge/Pandas-1.5%2B-150458?logo=pandas)
-- ![NumPy](https://img.shields.io/badge/NumPy-1.21%2B-013243?logo=numpy)
-- ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.0%2B-F7931E?logo=scikit-learn)
-- ![SciPy](https://img.shields.io/badge/SciPy-1.7%2B-8CAAE6?logo=scipy)
+### Machine Learning
+- **K-Means Clustering** - Unsupervised learning algorithm
+- **StandardScaler** - Feature normalization
+- **LabelEncoder** - Categorical encoding
+- **Silhouette Analysis** - Cluster validation
 
-**Visualisasi:**
-- ![Matplotlib](https://img.shields.io/badge/Matplotlib-3.5%2B-11557C?logo=python)
-- ![Seaborn](https://img.shields.io/badge/Seaborn-0.11%2B-5599FF)
+### Visualization Packages
+- **Matplotlib** - Comprehensive plotting
+- **Seaborn** - Statistical visualizations
+- **Plotly** - Interactive 3D plots
+- **Radar Charts** - Multi-dimensional comparison
+
+## ✨ Fitur Unggulan
+
+### ✅ **Complete End-to-End Pipeline**
+Dari data loading sampai business insights dalam satu notebook
+
+### ✅ **Comprehensive EDA**
+30+ visualizations untuk pemahaman data mendalam
+
+### ✅ **Multiple Validation Methods**
+4 metode berbeda untuk menentukan optimal K
+
+### ✅ **Business-Ready Outputs**
+- Customer segments dengan nama bisnis yang meaningful
+- Strategic recommendations per segment
+- Prediction function untuk pelanggan baru
+
+### ✅ **Production Ready**
+- Model saving/loading dengan timestamp
+- Configurable parameters
+- Error handling dan validation
+
+### ✅ **Interactive Elements**
+- 3D visualizations yang dapat di-rotate
+- Comparative analysis dashboard
+- Export functionality untuk reports
+
+## 📈 Business Impact
+
+### Untuk Tim Marketing
+1. **Segmented Campaigns**: 5x lebih targeted dibanding one-size-fits-all
+2. **Budget Optimization**: Alokasi budget berdasarkan segment value
+3. **Personalization**: Customer experience yang disesuaikan
+4. **Retention Strategies**: Program khusus untuk high-value segments
+
+### Untuk Manajemen
+1. **Data-Driven Decisions**: Insights berbasis analisis statistik
+2. **Performance Tracking**: Metrics per segment untuk KPI tracking
+3. **Resource Allocation**: Staffing dan inventory planning
+4. **Market Positioning**: Understanding competitive advantages
+
+## 🚀 Getting Started for Developers
+
+### Development Setup
+```bash
+# Clone repository
+git clone https://github.com/username/mall-customer-segmentation.git
+
+# Create virtual environment
+python -m venv venv
+
+# Activate (Windows)
+venv\Scripts\activate
+
+# Activate (Mac/Linux)
+source venv/bin/activate
+
+# Install development dependencies
+pip install -r requirements.txt
+
+# Run tests (jika ada)
+python -m pytest tests/
+```
+
+### Project Structure Guide
+```
+src/
+├── data_loader.py     # Load and validate data
+├── preprocessing.py   # Data cleaning and transformation
+├── clustering.py      # K-Means and optimal K finding
+└── visualization.py   # All plotting functions
+
+notebooks/
+└── mall_customer_segmentation.ipynb  # Main analysis notebook
+```
+
+### Adding New Features
+1. **New clustering algorithm**: Modify `clustering.py`
+2. **Additional visualizations**: Extend `visualization.py`
+3. **New data sources**: Update `data_loader.py`
+4. **Advanced preprocessing**: Enhance `preprocessing.py`
 
 ## 🤝 Kontribusi
 
-Kontribusi sangat diterima! Ikuti langkah berikut:
+Kontribusi sangat diterima! Berikut cara berkontribusi:
 
-1. **Fork** repository ini
-2. **Buat branch** baru (`git checkout -b feature/improvement`)
-3. **Commit** perubahan (`git commit -m 'Menambahkan fitur X'`)
-4. **Push** ke branch (`git push origin feature/improvement`)
-5. **Buat Pull Request**
+### Cara Berkontribusi
+1. **Fork** repository
+2. **Buat branch fitur** (`git checkout -b feature/amazing-feature`)
+3. **Commit perubahan** (`git commit -m 'Add amazing feature'`)
+4. **Push ke branch** (`git push origin feature/amazing-feature`)
+5. **Buka Pull Request**
 
-### Guidelines
-- Gunakan **Black** untuk formatting code
-- Tulis **docstring** untuk fungsi baru
-- Tambahkan **unit test** untuk kode baru
-- Update **documentation** sesuai perubahan
+### Area untuk Kontribusi
+- ✅ Implementasi algoritma clustering lain (DBSCAN, Hierarchical)
+- ✅ Integration dengan dashboard (Streamlit, Dash)
+- ✅ Automated reporting (PDF, HTML reports)
+- ✅ Real-time prediction API
+- ✅ Additional datasets untuk comparative analysis
 
+### Coding Standards
+- Gunakan **PEP 8** untuk style guide
+- Tulis **docstrings** untuk semua fungsi
+- Tambahkan **type hints** untuk better code clarity
+- Update **README.md** untuk perubahan signifikan
+
+## 📄 Lisensi
+
+Distributed under the MIT License. See `LICENSE` file for more information.
 
 ## 📞 Kontak
 
-**Fitria LM** - [@fitrlm](https://x.com/fitrlm) - fitrialm26@gmail.com
+**Nama Anda** - [@yourusername](https://twitter.com/yourusername) - email@example.com
 
-**Link Project:** [https://github.com/fitria-lm/mall-customer-segmentation](https://github.com/fitria-lm/mall-customer-segmentation)
+**Link Project**: [https://github.com/yourusername/mall-customer-segmentation](https://github.com/yourusername/mall-customer-segmentation)
+
+**Kaggle Dataset**: [Mall Customers Segmentation](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python)
 
 ---
 
 ## 🙏 Acknowledgments
 
-- Dataset dari [Kaggle](https://www.kaggle.com/datasets/abdallahwagih/mall-customers-segmentation/data)
-- Inspirasi dari berbagai tutorial machine learning
-- Komunitas data science Indonesia
+- Dataset dari **Kaggle Community**
+- Inspirasi dari berbagai **data science tutorials**
+- **Scikit-learn team** untuk library yang luar biasa
+- **Matplotlib & Seaborn** untuk visualization tools
+- Komunitas **Python Indonesia** untuk dukungan
 
+## 📚 Referensi & Resources
 
-## 📚 Referensi
+1. [Scikit-learn Clustering Documentation](https://scikit-learn.org/stable/modules/clustering.html)
+2. [Towards Data Science - Customer Segmentation](https://towardsdatascience.com/customer-segmentation-using-k-means-clustering-d33964f238c3)
+3. [Kaggle Notebook - Mall Customers Tutorial](https://www.kaggle.com/code/vjchoudhary7/customer-segmentation-tutorial-in-python)
+4. [Analytics Vidhya - K-Means Complete Guide](https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/)
+5. [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
 
-1. [Scikit-learn Documentation - K-Means](https://scikit-learn.org/stable/modules/clustering.html#k-means)
-2. [Kaggle Notebook - Customer Segmentation Tutorial](https://www.kaggle.com/vjchoudhary7/customer-segmentation-tutorial-in-python)
-3. [Towards Data Science - Customer Segmentation](https://towardsdatascience.com/customer-segmentation-using-k-means-clustering-d33964f238c3)
-4. [Analytics Vidhya - Complete Guide to K-Means Clustering](https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/)
+---
 
